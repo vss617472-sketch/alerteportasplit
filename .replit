@@ -21,3 +21,8 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+POLAR_PRODUCT_ID = "0358546f-1871-4769-80e7-dfcb7cddd8ab"

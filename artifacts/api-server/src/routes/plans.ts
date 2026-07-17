@@ -4,6 +4,7 @@ import {
   CreateCheckoutBody,
   CreateCheckoutResponse,
 } from "@workspace/api-zod";
+import { createPolarCheckout } from "../lib/polar.js";
 
 const router: IRouter = Router();
 
@@ -77,11 +78,17 @@ router.post("/checkout", async (req, res): Promise<void> => {
     return;
   }
 
-  // Polar.sh checkout — return placeholder URL for now
-  // Replace with real Polar.sh checkout creation when keys are added
-  const checkoutUrl = `https://buy.polar.sh/portasplit-alerts/${planId}?email=${encodeURIComponent(parsed.data.email)}`;
-
-  res.json(CreateCheckoutResponse.parse({ checkoutUrl }));
+  try {
+    const checkout = await createPolarCheckout({
+      email: parsed.data.email,
+      planId,
+      metadata: { planName: plan.name, priceEur: String(plan.priceEur) },
+    });
+    res.json(CreateCheckoutResponse.parse({ checkoutUrl: checkout.url }));
+  } catch (err) {
+    req.log.error({ err }, "Polar.sh checkout failed");
+    res.status(502).json({ error: "Checkout unavailable — please try again" });
+  }
 });
 
 export default router;

@@ -8,6 +8,7 @@ import {
   DeleteAlertParams,
   VerifyAlertParams,
 } from "@workspace/api-zod";
+import { sendVerificationEmail } from "../lib/email.js";
 
 const router: IRouter = Router();
 
@@ -56,6 +57,18 @@ router.post("/alerts", async (req, res): Promise<void> => {
     .returning();
 
   req.log.info({ alertId: alert.id, email }, "Alert subscription created");
+
+  // Send verification email (non-blocking — don't fail the request if email fails)
+  const planNames: Record<string, string> = {
+    week: "1 Week",
+    month: "1 Month",
+    "two-months": "2 Months",
+  };
+  sendVerificationEmail({
+    to: email,
+    token,
+    planName: planNames[planId ?? ""] ?? planId ?? "Standard",
+  }).catch((err) => req.log.error({ err }, "Failed to send verification email"));
 
   res.status(201).json(
     CreateAlertResponse.parse({
