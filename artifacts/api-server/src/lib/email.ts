@@ -4,7 +4,9 @@
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = process.env.FROM_EMAIL ?? "PortaSplit Alerts <alerts@portasplit.fr>";
+// onboarding@resend.dev works without domain verification (Resend sandbox sender)
+// After verifying your domain in resend.com, set FROM_EMAIL to alerts@yourdomain.com
+const FROM_EMAIL = process.env.FROM_EMAIL ?? "onboarding@resend.dev";
 const APP_URL = process.env.APP_URL ?? `https://${process.env.REPLIT_DEV_DOMAIN}`;
 
 interface SendEmailOptions {

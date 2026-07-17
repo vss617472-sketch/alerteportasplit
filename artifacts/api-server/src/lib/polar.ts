@@ -34,7 +34,8 @@ export async function createPolarCheckout(opts: {
     },
   };
 
-  const res = await fetch(`${POLAR_API}/v1/checkouts/custom`, {
+  // Polar requires trailing slash on /v1/checkouts/
+  const res = await fetch(`${POLAR_API}/v1/checkouts/`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${POLAR_ACCESS_TOKEN}`,
