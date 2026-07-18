@@ -26,5 +26,7 @@ channel = "stable-25_05"
 
 [userenv.shared]
 POLAR_PRODUCT_ID = "0358546f-1871-4769-80e7-dfcb7cddd8ab"
-APP_URL = "https://996e73f7-937e-4709-8554-0397dcb3e2e8-00-2japwm7qt1y59.pike.replit.dev"
 FROM_EMAIL = "onboarding@resend.dev"
+
+[userenv.production]
+APP_URL = "https://radar-analysis-suite--vss617472.replit.app"
