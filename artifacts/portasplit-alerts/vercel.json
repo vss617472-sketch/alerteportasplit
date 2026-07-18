@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @workspace/portasplit-alerts run build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "BASE_PATH": "/"
+  }
+}
