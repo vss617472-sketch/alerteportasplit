@@ -86,7 +86,8 @@ export async function sendVerificationEmail(opts: {
   token: string;
   planName: string;
 }): Promise<void> {
-  const verifyUrl = `${APP_URL}/api/alerts/verify/${opts.token}`;
+  // Link to the frontend verify page (which calls the API itself)
+  const verifyUrl = `${APP_URL}/verify/${opts.token}`;
   const unsubUrl = `${APP_URL}/api/alerts/${opts.token}`;
 
   await sendEmail({

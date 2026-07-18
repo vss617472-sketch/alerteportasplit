@@ -25,9 +25,12 @@ export async function createPolarCheckout(opts: {
     return { url: fallbackUrl, id: "placeholder" };
   }
 
+  const APP_URL = process.env.APP_URL ?? `https://${process.env.REPLIT_DEV_DOMAIN}`;
+
   const body: Record<string, unknown> = {
     product_id: POLAR_PRODUCT_ID,
     customer_email: opts.email,
+    success_url: `${APP_URL}/?paid=true`,
     metadata: {
       planId: opts.planId,
       ...(opts.metadata ?? {}),

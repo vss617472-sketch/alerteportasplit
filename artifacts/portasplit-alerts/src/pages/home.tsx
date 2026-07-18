@@ -24,7 +24,7 @@ import { StoreList } from "@/components/store-list";
 import { StatusBadge } from "@/components/status-badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "react-day-picker";
+import { Button } from "@/components/ui/button";
 
 const PRODUCT_ID = 1;
 
@@ -36,8 +36,20 @@ export default function HomePage() {
 
   const isOutOfStock = summary?.inStockCount === 0;
 
+  // Detect return from Polar checkout
+  const urlParams = new URLSearchParams(window.location.search);
+  const justPaid = urlParams.get("paid") === "true";
+
   return (
     <Layout>
+      {/* Post-payment success banner */}
+      {justPaid && (
+        <div className="bg-green-600 text-white py-3 px-4 text-center text-sm font-mono font-medium tracking-wide flex items-center justify-center gap-2">
+          <CheckCircle2 className="h-4 w-4" />
+          Payment confirmed! Check your email to activate your alerts.
+        </div>
+      )}
+
       {/* Announcement Banner */}
       <div className="bg-primary text-primary-foreground py-2 px-4 text-center text-xs font-mono font-medium tracking-wide">
         <span className="inline-flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse" />
