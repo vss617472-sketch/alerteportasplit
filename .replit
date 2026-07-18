@@ -66,4 +66,4 @@ POLAR_PRODUCT_ID = "0358546f-1871-4769-80e7-dfcb7cddd8ab"
 FROM_EMAIL = "onboarding@resend.dev"
 
 [userenv.production]
-APP_URL = "https://radar-analysis-suite--vss617472.replit.app"
+APP_URL = "https://alerteportasplit--vjbg5613.replit.app"
