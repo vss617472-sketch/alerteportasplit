@@ -46,14 +46,14 @@ export default function HomePage() {
       {justPaid && (
         <div className="bg-green-600 text-white py-3 px-4 text-center text-sm font-mono font-medium tracking-wide flex items-center justify-center gap-2">
           <CheckCircle2 className="h-4 w-4" />
-          Payment confirmed! Check your email to activate your alerts.
+          Paiement confirmé ! Vérifiez votre email pour activer vos alertes.
         </div>
       )}
 
       {/* Announcement Banner */}
       <div className="bg-primary text-primary-foreground py-2 px-4 text-center text-xs font-mono font-medium tracking-wide">
         <span className="inline-flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse" />
-        SYSTEM ACTIVE: Be alerted the instant {product?.name || "PortaSplit"} comes back in stock.
+        SYSTÈME ACTIF : Soyez alerté dès que le {product?.name || "PortaSplit"} revient en stock.
       </div>
 
       {/* Hero Section */}
@@ -65,13 +65,13 @@ export default function HomePage() {
             <div className="space-y-4">
               <div className="inline-flex items-center rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-xs font-semibold font-mono text-muted-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
                 <Radar className="mr-1.5 h-3 w-3 text-primary" />
-                Live Tracker
+                Tracker en direct
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
                 {product?.name || "Midea PortaSplit"}
                 <span className="block text-muted-foreground mt-2 text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight">
-                  Stock Radar
+                  Radar de stock
                 </span>
               </h1>
               
@@ -82,7 +82,7 @@ export default function HomePage() {
                 />
                 <span className="text-sm font-mono text-muted-foreground flex items-center gap-1.5">
                   <Activity className="h-4 w-4" />
-                  Monitored every {product?.checkIntervalSeconds ? product.checkIntervalSeconds / 60 : 5} min across France
+                  Surveillé toutes les {product?.checkIntervalSeconds ? product.checkIntervalSeconds / 60 : 5} min en France
                 </span>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </div>
-              LIVE FEED
+              EN DIRECT
             </div>
             <StockMap points={mapData} />
           </div>
@@ -118,7 +118,7 @@ export default function HomePage() {
                 {summary?.totalStores || 282}
               </div>
               <div className="text-xs text-muted-foreground font-mono uppercase mt-1 flex items-center justify-center gap-1">
-                <Store className="h-3 w-3" /> Stores Monitored
+                <Store className="h-3 w-3" /> Magasins surveillés
               </div>
             </div>
             <div className="px-4 text-center">
@@ -126,7 +126,7 @@ export default function HomePage() {
                 {summary?.outOfStockCount || 0}
               </div>
               <div className="text-xs text-muted-foreground font-mono uppercase mt-1 flex items-center justify-center gap-1">
-                Sold Out
+                Épuisés
               </div>
             </div>
             <div className="px-4 text-center">
@@ -134,15 +134,15 @@ export default function HomePage() {
                 {summary?.inStockCount || 0}
               </div>
               <div className="text-xs text-muted-foreground font-mono uppercase mt-1 flex items-center justify-center gap-1">
-                Units Available
+                Unités disponibles
               </div>
             </div>
             <div className="px-4 text-center">
               <div className="text-2xl sm:text-3xl font-bold font-mono tracking-tighter flex items-center justify-center">
-                <Clock className="h-5 w-5 mr-2 text-primary" /> Live
+                <Clock className="h-5 w-5 mr-2 text-primary" /> En direct
               </div>
               <div className="text-xs text-muted-foreground font-mono uppercase mt-1 flex items-center justify-center gap-1">
-                Update Frequency
+                Fréquence de mise à jour
               </div>
             </div>
           </div>
@@ -153,12 +153,12 @@ export default function HomePage() {
       <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight font-mono">Terminal Directory</h2>
-            <p className="text-muted-foreground mt-2">Filter and search the raw store database.</p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight font-mono">Répertoire des magasins</h2>
+            <p className="text-muted-foreground mt-2">Filtrez et recherchez dans la base de données des magasins.</p>
           </div>
           <Badge variant="outline" className="font-mono text-xs w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2" />
-            Database Synced
+            Base de données synchronisée
           </Badge>
         </div>
         <StoreList productId={PRODUCT_ID} />
@@ -169,9 +169,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none mix-blend-overlay"></div>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight">How it works</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Comment ça marche</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              We run automated scripts 24/7 checking the stock of PortaSplit across hundreds of retail APIs so you don't have to.
+              Nous exécutons des scripts automatisés 24h/24 qui vérifient le stock du PortaSplit dans des centaines d'APIs de détaillants, à votre place.
             </p>
           </div>
           
@@ -181,11 +181,11 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>1. Set Coordinates</CardTitle>
+                <CardTitle>1. Définir votre zone</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Tell us your postal code and how far you're willing to drive to pick up the unit.
+                  Indiquez votre code postal et la distance maximale que vous acceptez pour récupérer l'appareil.
                 </p>
               </CardContent>
             </Card>
@@ -195,11 +195,11 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Activity className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>2. We Monitor</CardTitle>
+                <CardTitle>2. Nous surveillons</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Our servers ping the inventory systems of all major retailers every 5 minutes, 24 hours a day.
+                  Nos serveurs interrogent les systèmes d'inventaire de tous les grands détaillants toutes les 5 minutes, 24h/24.
                 </p>
               </CardContent>
             </Card>
@@ -209,11 +209,11 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4 text-primary-foreground">
                   <Zap className="h-6 w-6" />
                 </div>
-                <CardTitle>3. Instant Alert</CardTitle>
+                <CardTitle>3. Alerte instantanée</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  The second a unit appears in your radius, we fire an email to your inbox so you can checkout before anyone else.
+                  Dès qu'une unité apparaît dans votre rayon, nous envoyons un email à votre boîte de réception pour que vous puissiez commander avant tout le monde.
                 </p>
               </CardContent>
             </Card>
@@ -224,9 +224,9 @@ export default function HomePage() {
       {/* Pricing */}
       <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24" id="pricing">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight font-mono">Select Duration</h2>
+          <h2 className="text-3xl font-bold tracking-tight font-mono">Choisir la durée</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Simple, one-time payments. No subscriptions, no hidden fees. Choose how long you want us to monitor for you.
+            Paiements uniques et simples. Sans abonnement, sans frais cachés. Choisissez combien de temps vous souhaitez que nous surveillions pour vous.
           </p>
         </div>
         
@@ -236,12 +236,12 @@ export default function HomePage() {
               <Card key={plan.id} className={`flex flex-col ${plan.popular ? 'border-primary ring-1 ring-primary shadow-lg scale-105 z-10' : ''}`}>
                 {plan.popular && (
                   <div className="bg-primary text-primary-foreground text-xs font-bold font-mono text-center py-1 uppercase tracking-wider">
-                    Most Popular
+                    Le plus populaire
                   </div>
                 )}
                 <CardHeader>
                   <CardTitle className="text-xl font-mono">{plan.name}</CardTitle>
-                  <CardDescription>One-time payment</CardDescription>
+                  <CardDescription>Paiement unique</CardDescription>
                   <div className="text-4xl font-bold mt-4 font-mono">
                     €{plan.priceEur.toFixed(2)}
                   </div>
@@ -250,32 +250,32 @@ export default function HomePage() {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                      <span>{plan.durationDays} days of 24/7 monitoring</span>
+                      <span>{plan.durationDays} jours de surveillance 24h/24</span>
                     </li>
                     <li className="flex items-start gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                      <span>Checks every {plan.checkIntervalSeconds / 60} minutes</span>
+                      <span>Vérifications toutes les {plan.checkIntervalSeconds / 60} minutes</span>
                     </li>
                     <li className="flex items-start gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                      <span>Unlimited email alerts</span>
+                      <span>Alertes email illimitées</span>
                     </li>
                     <li className="flex items-start gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                      <span>All {summary?.totalStores || 282} stores covered</span>
+                      <span>Tous les {summary?.totalStores || 282} magasins couverts</span>
                     </li>
                   </ul>
                 </CardContent>
                 <CardFooter>
                   <Button asChild className="w-full font-mono font-bold" variant={plan.popular ? "default" : "outline"}>
-                    <a href="#alerts">Select {plan.name}</a>
+                    <a href="#alerts">Choisir {plan.name}</a>
                   </Button>
                 </CardFooter>
               </Card>
             ))
           ) : (
             <div className="col-span-3 text-center py-12 text-muted-foreground font-mono">
-              Loading pricing plans...
+              Chargement des forfaits...
             </div>
           )}
         </div>
@@ -286,27 +286,27 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold tracking-tight text-center mb-12 font-mono">FAQ</h2>
         <div className="space-y-8">
           <div>
-            <h3 className="text-lg font-bold">How fast are the alerts?</h3>
+            <h3 className="text-lg font-bold">Quelle est la rapidité des alertes ?</h3>
             <p className="text-muted-foreground mt-2">
-              We check the APIs of all supported retailers every 5 minutes. The instant our system detects positive stock, an email is dispatched within milliseconds.
+              Nous vérifions les APIs de tous les détaillants pris en charge toutes les 5 minutes. Dès que notre système détecte du stock positif, un email est envoyé en quelques millisecondes.
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold">Why do I have to pay for this?</h3>
+            <h3 className="text-lg font-bold">Pourquoi dois-je payer ?</h3>
             <p className="text-muted-foreground mt-2">
-              Running high-frequency checks across 280+ store APIs requires significant server resources and proxy infrastructure to avoid being blocked. We charge a small one-time fee to cover these costs.
+              Effectuer des vérifications à haute fréquence sur plus de 280 APIs de magasins nécessite des ressources serveur importantes et une infrastructure proxy pour éviter d'être bloqué. Nous facturons un petit frais unique pour couvrir ces coûts.
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold">Can I cancel my alert?</h3>
+            <h3 className="text-lg font-bold">Puis-je annuler mon alerte ?</h3>
             <p className="text-muted-foreground mt-2">
-              Yes, every alert email contains a 1-click unsubscribe link. You will not be charged again regardless, as this is a strict one-time payment.
+              Oui, chaque email d'alerte contient un lien de désabonnement en 1 clic. Vous ne serez plus jamais facturé, car il s'agit d'un paiement unique.
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold">Is the checkout secure?</h3>
+            <h3 className="text-lg font-bold">Le paiement est-il sécurisé ?</h3>
             <p className="text-muted-foreground mt-2">
-              Yes. We use Polar.sh for all payment processing. We never see or store your credit card information.
+              Oui. Nous utilisons Polar.sh pour tous les traitements de paiement. Nous ne voyons ni ne stockons jamais vos informations de carte bancaire.
             </p>
           </div>
         </div>

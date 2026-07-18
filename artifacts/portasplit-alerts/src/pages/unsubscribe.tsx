@@ -19,7 +19,6 @@ export default function UnsubscribePage() {
       await deleteAlert.mutateAsync({ token });
       setIsSuccess(true);
     } catch (error) {
-      // Error is handled via Toast globally usually, but we could also show local state
       console.error("Failed to unsubscribe", error);
     }
   };
@@ -30,10 +29,10 @@ export default function UnsubscribePage() {
         <Card className="border-primary/20 shadow-lg">
           <CardHeader className="text-center pb-2">
             <CardTitle className="font-mono text-2xl flex items-center justify-center gap-2">
-              <BellOff className="h-6 w-6" /> Unsubscribe
+              <BellOff className="h-6 w-6" /> Se désabonner
             </CardTitle>
             <CardDescription>
-              Stop receiving PortaSplit stock alerts
+              Arrêter de recevoir les alertes de stock PortaSplit
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6 flex flex-col items-center justify-center min-h-[200px]">
@@ -43,9 +42,9 @@ export default function UnsubscribePage() {
                   <CheckCircle2 className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Successfully Unsubscribed</h3>
+                  <h3 className="text-lg font-bold">Désabonnement réussi</h3>
                   <p className="text-sm text-muted-foreground mt-2 max-w-[280px]">
-                    You will no longer receive stock alerts for this product. You can subscribe again at any time.
+                    Vous ne recevrez plus d'alertes de stock pour ce produit. Vous pouvez vous réabonner à tout moment.
                   </p>
                 </div>
               </div>
@@ -55,15 +54,15 @@ export default function UnsubscribePage() {
                   <AlertTriangle className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Are you sure?</h3>
+                  <h3 className="text-lg font-bold">Êtes-vous sûr ?</h3>
                   <p className="text-sm text-muted-foreground mt-2 max-w-[280px]">
-                    You will lose your spot and won't be notified when PortaSplit comes back in stock.
+                    Vous perdrez votre place et ne serez pas notifié lorsque le PortaSplit reviendra en stock.
                   </p>
                 </div>
                 
                 {deleteAlert.isError && (
                   <p className="text-sm text-destructive font-mono mt-4">
-                    Failed to unsubscribe. The link might be expired or invalid.
+                    Échec du désabonnement. Le lien est peut-être expiré ou invalide.
                   </p>
                 )}
               </div>
@@ -79,18 +78,18 @@ export default function UnsubscribePage() {
                   disabled={deleteAlert.isPending}
                 >
                   {deleteAlert.isPending ? (
-                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processing...</>
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Traitement...</>
                   ) : (
-                    "Yes, Unsubscribe Me"
+                    "Oui, me désabonner"
                   )}
                 </Button>
                 <Button asChild variant="outline" className="font-mono w-full">
-                  <Link href="/">Cancel & Keep My Alerts</Link>
+                  <Link href="/">Annuler et garder mes alertes</Link>
                 </Button>
               </>
             ) : (
               <Button asChild variant="default" className="font-mono w-full">
-                <Link href="/">Return to Dashboard</Link>
+                <Link href="/">Retour au tableau de bord</Link>
               </Button>
             )}
           </CardFooter>

@@ -28,10 +28,10 @@ import { useCreateAlert, useCreateCheckout } from "@workspace/api-client-react";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  postalCode: z.string().min(4, "Postal code required").max(10),
+  email: z.string().email({ message: "Veuillez saisir une adresse email valide." }),
+  postalCode: z.string().min(4, "Code postal requis").max(10),
   radiusKm: z.coerce.number().min(5).max(100),
-  planId: z.string().min(1, "Please select a plan"),
+  planId: z.string().min(1, "Veuillez sélectionner un forfait"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -93,15 +93,15 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
       
       setIsSuccess(true);
       toast({
-        title: "Alert created!",
-        description: "Check your email to confirm your subscription.",
+        title: "Alerte créée !",
+        description: "Vérifiez votre email pour confirmer votre abonnement.",
       });
       form.reset();
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Error creating alert",
-        description: "Please try again later.",
+        title: "Erreur lors de la création de l'alerte",
+        description: "Veuillez réessayer plus tard.",
       });
     }
   }
@@ -114,13 +114,13 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-xl font-bold font-mono text-foreground">Alert Created</h3>
+            <h3 className="text-xl font-bold font-mono text-foreground">Alerte créée</h3>
             <p className="text-muted-foreground text-sm max-w-sm">
-              We've sent a confirmation link to your email address. Please click it to activate your alerts.
+              Nous avons envoyé un lien de confirmation à votre adresse email. Cliquez dessus pour activer vos alertes.
             </p>
           </div>
           <Button variant="outline" onClick={() => setIsSuccess(false)} className="mt-4 font-mono text-xs">
-            Create another alert
+            Créer une autre alerte
           </Button>
         </CardContent>
       </Card>
@@ -132,10 +132,10 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
       <CardHeader className="bg-muted/50 border-b border-border/50 pb-6">
         <CardTitle className="font-mono flex items-center gap-2">
           <AlertCircle className="h-5 w-5 text-primary" />
-          Activate Radar
+          Activer le radar
         </CardTitle>
         <CardDescription className="text-sm">
-          Get an email the instant PortaSplit stock is detected near you.
+          Recevez un email dès que du stock PortaSplit est détecté près de chez vous.
         </CardDescription>
       </CardHeader>
       
@@ -147,11 +147,11 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Target Email</FormLabel>
+                  <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Email de réception</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Mail className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="you@example.com" className="pl-9 font-mono" {...field} />
+                      <Input placeholder="vous@example.com" className="pl-9 font-mono" {...field} />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -165,11 +165,11 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
                 name="postalCode"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Location (Postal)</FormLabel>
+                    <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Localisation (Code postal)</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <MapPin className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-                        <Input placeholder="e.g. 75001" className="pl-9 font-mono uppercase" {...field} />
+                        <Input placeholder="ex. 75001" className="pl-9 font-mono uppercase" {...field} />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -182,14 +182,14 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
                 name="radiusKm"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Search Radius</FormLabel>
+                    <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Rayon de recherche</FormLabel>
                     <Select 
                       onValueChange={(val) => field.onChange(parseInt(val, 10))} 
                       defaultValue={field.value.toString()}
                     >
                       <FormControl>
                         <SelectTrigger className="font-mono">
-                          <SelectValue placeholder="Select radius" />
+                          <SelectValue placeholder="Choisir le rayon" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -211,11 +211,11 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
               name="planId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Monitoring Duration</FormLabel>
+                  <FormLabel className="font-mono text-xs uppercase text-muted-foreground">Durée de surveillance</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="font-mono h-14">
-                        <SelectValue placeholder="Select a plan" />
+                        <SelectValue placeholder="Choisir un forfait" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -229,15 +229,15 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
                       ))}
                       {plans.length === 0 && (
                         <>
-                          <SelectItem value="plan_1week">1 Week (24/7) - €4.90</SelectItem>
-                          <SelectItem value="plan_1month">1 Month (24/7) - €9.90</SelectItem>
-                          <SelectItem value="plan_2months">2 Months (24/7) - €14.90</SelectItem>
+                          <SelectItem value="plan_1week">1 Semaine (24h/24) - €4.90</SelectItem>
+                          <SelectItem value="plan_1month">1 Mois (24h/24) - €9.90</SelectItem>
+                          <SelectItem value="plan_2months">2 Mois (24h/24) - €14.90</SelectItem>
                         </>
                       )}
                     </SelectContent>
                   </Select>
                   <FormDescription className="text-xs">
-                    One-time payment. No auto-renewal.
+                    Paiement unique. Sans renouvellement automatique.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -253,10 +253,10 @@ export function AlertForm({ productId = 1, plans = [] }: AlertFormProps) {
               {createAlert.isPending || createCheckout.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Initializing...
+                  Initialisation...
                 </>
               ) : (
-                "Activate Alerts"
+                "Activer les alertes"
               )}
             </Button>
           </CardFooter>

@@ -13,28 +13,28 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
       return (
         <span className={cn("inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium font-mono text-green-700 bg-green-500/10 border border-green-500/20 dark:text-green-400", className)}>
           <CheckCircle2 className="h-3.5 w-3.5" />
-          IN STOCK
+          EN STOCK
         </span>
       );
     case "low_stock":
       return (
         <span className={cn("inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium font-mono text-amber-700 bg-amber-500/10 border border-amber-500/20 dark:text-amber-400", className)}>
           <AlertCircle className="h-3.5 w-3.5" />
-          LOW STOCK
+          STOCK FAIBLE
         </span>
       );
     case "out_of_stock":
       return (
         <span className={cn("inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium font-mono text-muted-foreground bg-muted border border-border", className)}>
           <XCircle className="h-3.5 w-3.5" />
-          SOLD OUT
+          ÉPUISÉ
         </span>
       );
     case "reserved":
       return (
         <span className={cn("inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium font-mono text-orange-700 bg-orange-500/10 border border-orange-500/20 dark:text-orange-400", className)}>
           <Clock className="h-3.5 w-3.5" />
-          RESERVED
+          RÉSERVÉ
         </span>
       );
     default:

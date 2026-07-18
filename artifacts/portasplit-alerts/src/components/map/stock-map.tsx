@@ -52,16 +52,16 @@ export function StockMap({ points }: StockMapProps) {
     <div className="relative h-full w-full bg-muted overflow-hidden rounded-xl border border-border ring-1 ring-border/50">
       <div className="absolute top-4 right-4 z-[400] bg-background/90 backdrop-blur border border-border text-xs font-mono px-3 py-2 rounded-md shadow-sm pointer-events-none">
         <div className="flex items-center gap-2 mb-1">
-          <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span> In Stock
+          <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span> En stock
         </div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span> Low Stock
+          <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span> Stock faible
         </div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="w-2 h-2 rounded-full bg-[#f97316]"></span> Reserved
+          <span className="w-2 h-2 rounded-full bg-[#f97316]"></span> Réservé
         </div>
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#6b7280]"></span> Sold Out
+          <span className="w-2 h-2 rounded-full bg-[#6b7280]"></span> Épuisé
         </div>
       </div>
 
@@ -71,7 +71,6 @@ export function StockMap({ points }: StockMapProps) {
         scrollWheelZoom={false}
         className="h-full w-full z-0"
       >
-        {/* Using a darker map tile layer to fit the war-room vibe */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -104,7 +103,7 @@ export function StockMap({ points }: StockMapProps) {
                 <div className="flex items-center justify-between pt-2 border-t border-border">
                   <StatusBadge status={point.status} />
                   {point.stockQty != null && point.status !== 'out_of_stock' && (
-                    <span className="text-xs font-mono font-medium">Qty: {point.stockQty}</span>
+                    <span className="text-xs font-mono font-medium">Qté : {point.stockQty}</span>
                   )}
                 </div>
               </div>

@@ -24,9 +24,9 @@ export default function VerifyPage() {
       <div className="container mx-auto max-w-lg px-4 pt-32 pb-24">
         <Card className="border-primary/20 shadow-lg">
           <CardHeader className="text-center pb-2">
-            <CardTitle className="font-mono text-2xl">Email Verification</CardTitle>
+            <CardTitle className="font-mono text-2xl">Vérification de l'email</CardTitle>
             <CardDescription>
-              Verifying your subscription to PortaSplit Alerts
+              Vérification de votre abonnement à PortaSplit Alertes
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6 flex flex-col items-center justify-center min-h-[200px]">
@@ -34,7 +34,7 @@ export default function VerifyPage() {
               <div className="flex flex-col items-center space-y-4">
                 <Loader2 className="h-10 w-10 animate-spin text-primary" />
                 <p className="text-sm font-mono text-muted-foreground animate-pulse">
-                  Verifying token...
+                  Vérification en cours...
                 </p>
               </div>
             )}
@@ -45,9 +45,9 @@ export default function VerifyPage() {
                   <XCircle className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Verification Failed</h3>
+                  <h3 className="text-lg font-bold">Échec de la vérification</h3>
                   <p className="text-sm text-muted-foreground mt-2 max-w-[280px]">
-                    The verification link is invalid or has expired. Please try creating a new alert.
+                    Le lien de vérification est invalide ou a expiré. Veuillez créer une nouvelle alerte.
                   </p>
                 </div>
               </div>
@@ -59,9 +59,9 @@ export default function VerifyPage() {
                   <CheckCircle2 className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Radar Active!</h3>
+                  <h3 className="text-lg font-bold">Radar actif !</h3>
                   <p className="text-sm text-muted-foreground mt-2 max-w-[280px]">
-                    Your email has been verified. You will now receive alerts the instant PortaSplit is restocked.
+                    Votre email a été vérifié. Vous recevrez désormais des alertes dès que le PortaSplit sera de nouveau en stock.
                   </p>
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function VerifyPage() {
           </CardContent>
           <CardFooter className="flex justify-center border-t border-border/50 bg-muted/30 pt-6">
             <Button asChild variant="outline" className="font-mono w-full sm:w-auto">
-              <Link href="/">Return to Dashboard</Link>
+              <Link href="/">Retour au tableau de bord</Link>
             </Button>
           </CardFooter>
         </Card>
