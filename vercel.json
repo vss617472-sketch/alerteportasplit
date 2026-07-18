@@ -1,0 +1,24 @@
+{
+  "buildCommand": "pnpm install && pnpm --filter @workspace/portasplit-alerts run build",
+  "outputDirectory": "artifacts/portasplit-alerts/dist/public",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://radar-analysis-suite--vss617472.replit.app/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
+      ]
+    }
+  ]
+}
