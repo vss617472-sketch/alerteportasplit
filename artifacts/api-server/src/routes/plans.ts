@@ -22,7 +22,7 @@ const PLANS = [
       "Location-based filtering",
     ],
     popular: false,
-    polarProductId: null,
+    polarProductId: "197b7170-185b-4fa9-89e1-659fd5828502",
   },
   {
     id: "month",
@@ -38,7 +38,7 @@ const PLANS = [
       "Reserved stock visibility",
     ],
     popular: true,
-    polarProductId: null,
+    polarProductId: "a076954a-18cc-4063-99b6-b5694a52807d",
   },
   {
     id: "two-months",
@@ -55,7 +55,7 @@ const PLANS = [
       "Priority alerts",
     ],
     popular: false,
-    polarProductId: null,
+    polarProductId: "aec4bb6f-a89b-4a32-8065-cb5041c4bccd",
   },
 ];
 
@@ -82,6 +82,7 @@ router.post("/checkout", async (req, res): Promise<void> => {
     const checkout = await createPolarCheckout({
       email: parsed.data.email,
       planId,
+      productId: plan.polarProductId,
       metadata: { planName: plan.name, priceEur: String(plan.priceEur) },
     });
     res.json(CreateCheckoutResponse.parse({ checkoutUrl: checkout.url }));
