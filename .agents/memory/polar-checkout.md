@@ -1,31 +1,19 @@
 ---
-name: Polar.sh checkout API
-description: How to call the Polar.sh checkout creation API correctly in this project
+name: Polar.sh checkout
+description: Correct Polar API endpoint and body format for creating checkouts
 ---
 
-# Polar.sh Checkout
+# Polar.sh Checkout Integration
 
-**Rule:** Use `POST https://api.polar.sh/v1/checkouts/` (trailing slash required — without it you get a 307 redirect that curl/fetch may not follow correctly with POST body)
+## Rules
+- Endpoint: `POST https://api.polar.sh/v1/checkouts/` (trailing slash required — 307 redirect without it)
+- Body field: `product_price_id` (NOT `product_id` — that caused 422 errors with newer Polar API version)
+- Email: Polar validates that the domain actually accepts email — `test@test.com` fails, use real domains for testing
+- `products` array format also exists but `product_price_id` is simplest for single-price checkouts
 
-**Why:** `/v1/checkouts` (no slash) returns 307 to `/v1/checkouts/`. `/v1/checkouts/custom` is GET-only (returns 405).
+**Why:** `product_id` stopped working in Polar API v2026-04 — switched to `product_price_id` which works reliably.
 
-**Body format:**
-```json
-{
-  "product_id": "<POLAR_PRODUCT_ID>",
-  "customer_email": "user@real-domain.com",
-  "metadata": { "planId": "month" }
-}
-```
-
-**How to apply:**
-- Use `product_id` at top level (not `product_price_id`)
-- Email must be a real domain (example.com is rejected by Polar's email validator)
-- Returns `{ url: "https://polar.sh/checkout/polar_c_..." }` — redirect user here
-- Product ID is stored in POLAR_PRODUCT_ID env var; token in POLAR_ACCESS_TOKEN secret
-- Implementation: `artifacts/api-server/src/lib/polar.ts`
-
-**Product details:**
-- Product: "Midea PortaSplit Stock Tracker"
-- Price type: seat_based one-time
-- Price: €13.90/seat (1-10 seats)
+## Plan → Price ID Mapping (PortaSplit project)
+- week (€4.90): product `197b7170-185b-4fa9-89e1-659fd5828502`, price `d41e5c07-05cc-4302-b796-fa6a6bd8d0f1`
+- month (€9.90): product `a076954a-18cc-4063-99b6-b5694a52807d`, price `7697fca2-55dd-47aa-b435-d07c1e6fa1a6`
+- two-months (€14.90): product `aec4bb6f-a89b-4a32-8065-cb5041c4bccd`, price `4fbdb18e-7538-4ca8-8a65-1402b4d26ecb`

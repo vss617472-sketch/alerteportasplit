@@ -16,13 +16,11 @@ export interface CreateCheckoutResult {
 export async function createPolarCheckout(opts: {
   email: string;
   planId: string;
-  productId?: string;
+  priceId?: string;
   metadata?: Record<string, string>;
 }): Promise<CreateCheckoutResult> {
-  const productId = opts.productId ?? POLAR_PRODUCT_ID;
-
   if (!POLAR_ACCESS_TOKEN) {
-    const fallbackUrl = `https://buy.polar.sh/product/${productId}?customer_email=${encodeURIComponent(opts.email)}&metadata[planId]=${opts.planId}`;
+    const fallbackUrl = `https://buy.polar.sh/product/${POLAR_PRODUCT_ID}?customer_email=${encodeURIComponent(opts.email)}&metadata[planId]=${opts.planId}`;
     console.warn("[polar] POLAR_ACCESS_TOKEN not set — returning placeholder URL");
     return { url: fallbackUrl, id: "placeholder" };
   }
@@ -30,7 +28,7 @@ export async function createPolarCheckout(opts: {
   const APP_URL = process.env.APP_URL ?? `https://${process.env.REPLIT_DEV_DOMAIN}`;
 
   const body: Record<string, unknown> = {
-    product_id: productId,
+    product_price_id: opts.priceId,
     customer_email: opts.email,
     success_url: `${APP_URL}/?paid=true`,
     metadata: {
