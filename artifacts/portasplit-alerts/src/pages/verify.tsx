@@ -14,6 +14,7 @@ export default function VerifyPage() {
 
   const { data, isLoading, isError, error } = useVerifyAlert(token, {
     query: {
+      queryKey: ["verifyAlert", token],
       enabled: !!token,
       retry: false,
     }

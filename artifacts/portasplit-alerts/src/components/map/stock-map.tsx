@@ -84,7 +84,7 @@ export function StockMap({ points }: StockMapProps) {
             center={[point.lat, point.lng]}
             radius={point.status === 'out_of_stock' ? 4 : 6}
             pathOptions={{
-              fillColor: STATUS_COLORS[point.status],
+              fillColor: STATUS_COLORS[point.status as keyof typeof STATUS_COLORS],
               color: point.status === 'out_of_stock' ? 'transparent' : 'white',
               weight: 1,
               fillOpacity: point.status === 'out_of_stock' ? 0.4 : 0.9,

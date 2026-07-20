@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Search, SlidersHorizontal, MapPin, Building2, Clock } from "lucide-react";
 import { useListStores, useListChains } from "@workspace/api-client-react";
+import type { StoreWithStock, ChainStat } from "@workspace/api-client-react";
 import { StatusBadge } from "@/components/status-badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -119,7 +120,7 @@ export function StoreList({ productId = 1 }: StoreListProps) {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">Toutes les enseignes</SelectItem>
-                {chains.map(c => (
+                {chains.map((c: ChainStat) => (
                   <SelectItem key={c.chain} value={c.chain}>{c.chain}</SelectItem>
                 ))}
               </SelectContent>
@@ -176,7 +177,7 @@ export function StoreList({ productId = 1 }: StoreListProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
-                {stores.map((store) => (
+                {stores.map((store: StoreWithStock) => (
                   <tr key={store.id} className="hover:bg-muted/30 transition-colors">
                     <td className="px-6 py-4">
                       <div className="font-semibold">{store.name}</div>

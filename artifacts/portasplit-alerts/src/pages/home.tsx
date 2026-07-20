@@ -6,6 +6,7 @@ import {
   useGetStockSummary, 
   useListPlans 
 } from "@workspace/api-client-react";
+import type { Plan } from "@workspace/api-client-react";
 import { 
   Radar, 
   Activity, 
@@ -232,7 +233,7 @@ export default function HomePage() {
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.length > 0 ? (
-            plans.map((plan) => (
+            plans.map((plan: Plan) => (
               <Card key={plan.id} className={`flex flex-col ${plan.popular ? 'border-primary ring-1 ring-primary shadow-lg scale-105 z-10' : ''}`}>
                 {plan.popular && (
                   <div className="bg-primary text-primary-foreground text-xs font-bold font-mono text-center py-1 uppercase tracking-wider">
