@@ -1,30 +1,31 @@
 import express, { type Express } from "express";
 import cors from "cors";
-import { pinoHttp } from 'pino-http';
+import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
 
 app.use(
-  pinoHttp({
+  (pinoHttp as any)({
     logger,
     serializers: {
-     (req: any, res: any) => {
+      req: (req: any) => {
         return {
           id: req.id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-     (req: any, res: any) => {
+      res: (res: any) => {
         return {
           statusCode: res.statusCode,
         };
       },
     },
-  }),
+  })
 );
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
