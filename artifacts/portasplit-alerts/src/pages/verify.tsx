@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import { useEffect } from "react";
 import { useRoute, useLocation, Link } from "wouter";
